@@ -5,8 +5,12 @@ Creates a table of contents automatically in your generated markdown or any othe
 
 ## Usage
 
-__NOTE__ This won't work on for you README files on github.com, [see here why](http://stackoverflow.com/questions/21340803/embed-javascript-in-github-readme-md).
-This need to be provided by GitHub, see [here](https://github.com/isaacs/github/issues/215)
+---
+
+__NOTE__ This won't work on for you README files on github.com, [see here why](http://stackoverflow.com/questions/21340803/embed-javascript-in-github-readme-md).  
+This feature need to be provided by GitHub, see [here](https://github.com/isaacs/github/issues/215)
+
+--- 
 
 You need to have control of the HTML, like on the gh-pages branch or your own page.
 
