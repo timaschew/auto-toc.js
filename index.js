@@ -3,6 +3,7 @@ function makeToc(selector, options) {
     throw new Error('need to provide a selector where to scan for headers');
   }
   var allChildren = Array.prototype.slice.call(document.querySelectorAll(selector + ' > *'));
+  var min = 9;
   var headers = allChildren.filter(function(item) {
     var classesList = item.className.split(' ');
     if (classesList.indexOf("toc-ignore") != -1) {
@@ -14,25 +15,25 @@ function makeToc(selector, options) {
     var splitted = item.nodeName.split('');
     var headingNumber = parseInt(splitted[1]);
     if (splitted[0] === 'H' && headingNumber >= 1 && headingNumber <= 6) {
+      min = Math.min(min, headingNumber);
       return true;
     }
   });
-  var hierarchy = createHierarchy(headers);
+  var hierarchy = createHierarchy(headers, min);
   var toc = parseNodes(hierarchy.nodes);
   var container = document.querySelector('.toc-placeholder');
   setText(container, '');
   container.appendChild(toc);
 }
 
-function createHierarchy(headers) {
+function createHierarchy(headers, minLevel) {
   var hierarchy = { nodes: [] };
+  window.hierarchy = hierarchy;
   var previousNode = { parent: hierarchy };
-  var level = null;
+  var level = minLevel;
+  var init = false;
   headers.forEach(function(header) {
     var headingNumber = parseInt(header.nodeName.substr(1));
-    if (level == null) {
-      level = headingNumber;
-    }
     var object = {
       title: getText(header),
       link: window.location.pathname + '#' + header.id,
@@ -42,27 +43,36 @@ function createHierarchy(headers) {
     if (headingNumber === level) {
       object.parent = previousNode.parent;
       // keep level
-    } else if (headingNumber - level === 1) {
-      // go one step deeper
+    } else if (headingNumber - level >= 1) {
+      // go one step deeper, regardless how much
+      // the difference between headingNumber and level is
+      if (init === false) {
+        var missingParent = {
+          parent: previousNode.parent,
+          title: '',
+          link: '',
+          originLevel: NaN,
+          nodes: []
+        };
+        previousNode.parent.nodes.push(missingParent);
+        previousNode = missingParent;
+      }
       object.parent = previousNode;
       level++;
-    } else if (headingNumber - level > 1) {
-      // go one step deeper, but heading would go more deeper
-      object.parent = previousNode;
-      level++;
-    } else if (headingNumber - level === -1) {
-      // go one step up again
-      object.parent = previousNode.parent.parent;
-      level--;
-    } else if (headingNumber - level < -1) {
-      // TODO: need to go up multiple levels
-      console.warn('NOT IMPLEMENTED YET (skipping)')
-      return
+    } else if (level - headingNumber >= 1) {
+      // go one or more step up again
+      var ref = previousNode.parent;
+      while (level - headingNumber >= 1) {
+        ref = ref.parent;
+        level--;
+      }
+      object.parent = ref;
     } else {
       console.error('unkown toc path');
     }
     object.parent.nodes.push(object);
     previousNode = object;
+    init = true;
   });
   return hierarchy;
 }
@@ -78,7 +88,6 @@ function parseNodes(nodes) {
 function parseNode(node) {
     var li = document.createElement("LI");
     var a = document.createElement("A");
-    console.log(node)
     setText(a, node.title);
     a.href = node.link;
     li.appendChild(a);
@@ -87,6 +96,7 @@ function parseNode(node) {
     }
     return li;
 }
+
 function getText(elem) {
     if (elem.textContent != null) {
         return elem.textContent;
