@@ -14,10 +14,10 @@ You need to have control of the HTML, like on the gh-pages branch or your own pa
 Write your Readme of whatever in your way, for instance markdown.
 
 ```md
-# My fance library
+# My fancy library
 
-## Installtion
-### Window
+## Installation
+### Windows
 ### OSX
 ## Usage
 ### Basic
@@ -28,11 +28,11 @@ Assuming all the headers are children of a div with the class `content` in your 
 Then just add a div element with a special class and add two script tags:
 
 ```md
-# My fance library
+# My fancy library
 # Table of contents
 <div class="toc-placeholder></div>
-## Installtion
-### Window
+## Installation
+### Windows
 ### OSX
 ## Usage
 ### Basic
@@ -40,7 +40,7 @@ Then just add a div element with a special class and add two script tags:
 <script src="https://cdn.rawgit.com/timaschew/auto-toc.js/306866287772ba9fce0a2bfa8b6d4b4e20824d58/index.js"></script>
 <script>
   makeToc('.content', {
-    ignore: ['My fance library', 'Table of contents']
+    ignore: ['My fancy library', 'Table of contents']
   });
 </script>
 ```
