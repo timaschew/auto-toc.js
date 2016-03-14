@@ -18,7 +18,9 @@ function makeToc(selector, options) {
   });
   var hierarchy = createHierarchy(headers);
   var toc = parseNodes(hierarchy.nodes);
-  document.querySelector('.toc-placeholder').appendChild(toc);
+  var container = document.querySelector('.toc-placeholder');
+  container.textContent = '';
+  container.appendChild(toc);
 }
 
 function createHierarchy(headers) {
