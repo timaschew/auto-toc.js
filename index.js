@@ -87,7 +87,7 @@ function parseNode(node) {
     }
     return li;
 }
-function getText(elem,) {
+function getText(elem) {
     if (elem.textContent != null) {
         return elem.textContent;
     } else {
