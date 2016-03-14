@@ -1,5 +1,5 @@
 # auto-toc.js
-:book: On the fly TOC genertor
+:book: On the fly TOC generator
 
 Creates a table of contents automatically in your generated markdown or any other HTML page
 
