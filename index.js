@@ -78,7 +78,7 @@ function parseNode(node) {
     var li = document.createElement("LI");
     var a = document.createElement("A");
     console.log(node)
-    a.innerText = node.title;
+    a.text = node.title;
     a.href = node.link;
     li.appendChild(a);
     if(node.nodes) {
