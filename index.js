@@ -8,7 +8,7 @@ function makeToc(selector, options) {
     if (classesList.indexOf("toc-ignore") != -1) {
       return false;
     }
-    if ((options.ignore || []).indexOf(item.textContent) != -1) {
+    if ((options.ignore || []).indexOf(getText(item)) != -1) {
       return false;
     }
     var splitted = item.nodeName.split('');
@@ -20,7 +20,7 @@ function makeToc(selector, options) {
   var hierarchy = createHierarchy(headers);
   var toc = parseNodes(hierarchy.nodes);
   var container = document.querySelector('.toc-placeholder');
-  container.textContent = '';
+  setText(container, '');
   container.appendChild(toc);
 }
 
@@ -34,7 +34,7 @@ function createHierarchy(headers) {
       level = headingNumber;
     }
     var object = {
-      title: header.textContent,
+      title: getText(header),
       link: window.location.pathname + '#' + header.id,
       originLevel: headingNumber,
       nodes: []
@@ -79,11 +79,26 @@ function parseNode(node) {
     var li = document.createElement("LI");
     var a = document.createElement("A");
     console.log(node)
-    a.text = node.title;
+    setText(a, node.title);
     a.href = node.link;
     li.appendChild(a);
     if(node.nodes) {
       li.appendChild(parseNodes(node.nodes));
     }
     return li;
+}
+function getText(elem,) {
+    if (elem.textContent != null) {
+        return elem.textContent;
+    } else {
+        elem.innerText;
+    }
+}
+
+function setText(elem, value) {
+    if (elem.textContent != null) {
+        elem.textContent = value;
+    } else {
+        elem.innerText = value;
+    }
 }
