@@ -1,10 +1,13 @@
-function makeToc(selector) {
+function makeToc(selector, options) {
   if (selector == null) {
     throw new Error('need to provide a selector where to scan for headers');
   }
   var allChildren = Array.prototype.slice.call(document.querySelectorAll(selector + ' > *'));
   var headers = allChildren.filter(function(item) {
     if (item.classList.contains("toc-ignore")) {
+      return false;
+    }
+    if ((options.ignore || []).indexOf(item.textContent) != -1) {
       return false;
     }
     var splitted = item.nodeName.split('');
@@ -44,11 +47,11 @@ function createHierarchy(headers) {
       // go one step deeper, but heading would go more deeper
       object.parent = previousNode;
       level++;
-    } else if (headingNumber - level === -1) {
+    } else if (headingNumber - level === -1) {
       // go one step up again
       object.parent = previousNode.parent.parent;
       level--;
-    } else if (headingNumber - level < -1) {
+    } else if (headingNumber - level < -1) {
       // TODO: need to go up multiple levels
       console.warn('NOT IMPLEMENTED YET (skipping)')
       return
