@@ -5,7 +5,7 @@ function makeToc(selector, options) {
   var allChildren = Array.prototype.slice.call(document.querySelectorAll(selector + ' > *'));
   var headers = allChildren.filter(function(item) {
     var classesList = item.className.split(' ');
-    if (classesList.contains("toc-ignore")) {
+    if (classesList.indexOf("toc-ignore") != -1) {
       return false;
     }
     if ((options.ignore || []).indexOf(item.textContent) != -1) {
