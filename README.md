@@ -58,4 +58,3 @@ Allowed Headers: h1, h2, h3, h4, h5, h6
 
 Cooming soon:
 - specify max heading level
-- implement missing handling of a use case: allow headings with a level lower than 2 of its previous sibling.
