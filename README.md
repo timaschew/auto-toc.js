@@ -11,7 +11,7 @@ This need to be provided by GitHub, see [here](https://github.com/isaacs/github/
 You need to have control of the HTML, like on the gh-pages branch or your own page.
 
 
-Write your Readme of whatever in your way, for instance markdown.
+Write your Readme in your favorite way, for instance markdown:
 
 ```md
 # My fancy library
