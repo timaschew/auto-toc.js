@@ -15,7 +15,6 @@ Write your Readme in your favorite way, for instance markdown:
 
 ```md
 # My fancy library
-
 ## Installation
 ### Windows
 ### OSX
@@ -29,7 +28,7 @@ Then just add a div element with a special class and add two script tags:
 
 ```md
 # My fancy library
-# Table of contents
+## Table of contents
 <div class="toc-placeholder></div>
 ## Installation
 ### Windows
