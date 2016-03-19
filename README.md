@@ -7,7 +7,7 @@ Creates a table of contents automatically in your generated markdown or any othe
 
 ---
 
-__NOTE__ This won't work on for you README files on github.com, [see here why](http://stackoverflow.com/questions/21340803/embed-javascript-in-github-readme-md).  
+__NOTE__ This won't work for you README files on github.com, [see here why](http://stackoverflow.com/questions/21340803/embed-javascript-in-github-readme-md).  
 This feature need to be provided by GitHub, see [here](https://github.com/isaacs/github/issues/215)
 
 --- 
