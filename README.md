@@ -40,7 +40,7 @@ Then just add a div element with a special class and add two script tags:
 ## Usage
 ### Basic
 ### Advanced
-<script src="https://cdn.rawgit.com/timaschew/auto-toc.js/0.0.1/index.js"></script>
+<script src="https://cdn.jsdelivr.net/auto-toc.js/0.0.1/index.js"></script>
 <script>
   makeToc('.content', {
     ignore: ['My fancy library', 'Table of contents']
