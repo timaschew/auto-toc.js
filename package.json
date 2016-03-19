@@ -1,0 +1,33 @@
+{
+  "name": "auto-toc.js",
+  "version": "0.0.2",
+  "description": "On the fly TOC generator",
+  "main": "dist.js",
+  "scripts": {
+    "build": "browserify -s autoToc index.js -o dist.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timaschew/auto-toc.js.git"
+  },
+  "keywords": [
+    "toc",
+    "makrdown",
+    "html",
+    "table",
+    "of",
+    "contents",
+    "client",
+    "browser",
+    "runtime"
+  ],
+  "author": "Anton Wilhelm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timaschew/auto-toc.js/issues"
+  },
+  "homepage": "https://github.com/timaschew/auto-toc.js#readme",
+  "devDependencies": {
+    "browserify": "^13.0.0"
+  }
+}
