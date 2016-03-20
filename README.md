@@ -58,7 +58,7 @@ Then just add a div element with a special class and add two script tags:
 ## Usage
 ### Basic
 ### Advanced
-<script src="https://cdn.jsdelivr.net/auto-toc.js/0.0.4/dist.js"></script>
+<script src="https://cdn.jsdelivr.net/auto-toc.js/0.0.5/dist.js"></script>
 <script>
   autoToc('.content', '.toc-placeholder');
 </script>
