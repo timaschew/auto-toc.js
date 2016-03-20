@@ -1,4 +1,7 @@
 function makeToc(contentSelector, tocSelector, options) {
+  if (options == null) {
+    options = {};
+  }
   if (contentSelector == null) {
     throw new Error('need to provide a selector where to scan for headers');
   }
