@@ -1,21 +1,26 @@
 # auto-toc.js
 :book: On the fly TOC generator
 
-Creates a table of contents automatically in your generated markdown or any other HTML page
+Creates a table of contents automatically in your generated markdown or any other HTML page.
+
+## Demo
+Try the [online editor](http://timaschew.github.io/auto-toc.js/)
+
 
 ## Usage
 
 ---
 
-__NOTE__ This won't work for you README files on github.com, [see here why](http://stackoverflow.com/questions/21340803/embed-javascript-in-github-readme-md).  
-This feature need to be provided by GitHub, see [here](https://github.com/isaacs/github/issues/215)
+__NOTE__ This won't work for your README.md files on github.com, [see here why](http://stackoverflow.com/questions/21340803/embed-javascript-in-github-readme-md).  
+This feature needs to be provided by GitHub, see [here](https://github.com/isaacs/github/issues/215)
 
 ---
 
-You need to have control of the HTML, like on the gh-pages branch or your own page.
+You can use this with README.md files on your [GitHub pages](https://pages.github.com/) or any other
+pages, where you have control to the (sub)domain.
 
 
-Write your Readme in your favorite way, for instance markdown:
+##### Your README.md before
 
 ```markdown
 # My fancy library
@@ -33,14 +38,14 @@ Then just add a div element with a special class and add two script tags:
 ```markdown
 # My fancy library
 ## Table of contents
-<div class="toc-placeholder></div>
+<div class="toc-placeholder"></div>
 ## Installation
 ### Windows
 ### OSX
 ## Usage
 ### Basic
 ### Advanced
-<script src="https://cdn.jsdelivr.net/auto-toc.js/0.0.1/index.js"></script>
+<script src="https://cdn.jsdelivr.net/auto-toc.js/0.0.3/dist.js"></script>
 <script>
   autoToc('.content', '.toc-placeholder', {
     ignore: ['My fancy library', 'Table of contents']
@@ -90,9 +95,6 @@ or with [karmdown](http://kramdown.gettalong.org/) (markdown + CSS classes and m
 ```html
 <h1>, <h2>, <h3>, <h4>, <h5>, <h6>
 ```
-
-## Demo
-See here a [demo for js-joda cheat sheet](http://timaschew.github.io/auto-toc.js/)
 
 
 ## Cooming soon:
