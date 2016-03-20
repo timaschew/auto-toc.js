@@ -2,8 +2,11 @@ function makeToc(contentSelector, tocSelector, options) {
   if (contentSelector == null) {
     throw new Error('need to provide a selector where to scan for headers');
   }
+  if (tocSelector == null) {
+    throw new Error('need to provide a selector where inject the TOC');
+  }
   var allChildren = Array.prototype.slice.call(document.querySelectorAll(contentSelector + ' > *'));
-  var min = 9;
+  var min = Number.MAX_SAFE_INTEGER;
   var headers = allChildren.filter(function(item) {
     var classesList = item.className.split(' ');
     if (classesList.indexOf("toc-ignore") != -1) {
@@ -14,7 +17,7 @@ function makeToc(contentSelector, tocSelector, options) {
     }
     var splitted = item.nodeName.split('');
     var headingNumber = parseInt(splitted[1]);
-    if (splitted[0] === 'H' && headingNumber >= 1 && headingNumber <= 6) {
+    if (splitted[0] === 'H' && headingNumber >= 1 && headingNumber <= (options.max || 6)) {
       min = Math.min(min, headingNumber);
       return true;
     }
