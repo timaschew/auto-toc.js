@@ -6,6 +6,19 @@ Creates a table of contents automatically in your generated markdown or any othe
 ## Demo
 Try the [online editor](http://timaschew.github.io/auto-toc.js/)
 
+## Why another TOC generator?
+
+Of course there are already tools to generate a TOC, but they need to be
+executed during build time. If you convert markdown to HTML you need a build
+process anyway, but generation of a TOC might be another build step in your pipeline,
+if you don't use Jeykell with Kramdown.
+
+This library generates the TOC at runtime in the browser. If you use plain HTML
+this library can help you to avoid updating your TOC at build time completely.
+
+There are also some runtime generators, but they are build on top of jQuery.
+This library has no dependencies and still works on IE9 ;)
+
 
 ## Usage
 
@@ -32,7 +45,7 @@ pages, where you have control to the (sub)domain.
 ### Advanced
 ```
 
-Assuming all the headers are children of a div with the class `content` in your generated HTML file.
+Assuming all the headings are children of a div with the class `content` in your generated HTML file.
 Then just add a div element with a special class and add two script tags:
 
 ```markdown
@@ -45,21 +58,20 @@ Then just add a div element with a special class and add two script tags:
 ## Usage
 ### Basic
 ### Advanced
-<script src="https://cdn.jsdelivr.net/auto-toc.js/0.0.3/dist.js"></script>
+<script src="https://cdn.jsdelivr.net/auto-toc.js/0.0.4/dist.js"></script>
 <script>
-  autoToc('.content', '.toc-placeholder', {
-    ignore: ['My fancy library', 'Table of contents']
-  });
+  autoToc('.content', '.toc-placeholder');
 </script>
 ```
 
 ### API
 ##### autoToc(contentSelector, placeholderSelector, options)
 
-- __contentSelector__ CSS selector of the parent of all headers
-- __placeholderSelector__ CSS selector of the element where the TOC should be injected to, the element should already exists
-- __contentSelector__ options object
-  - __ignore__ Array of strings which will be ignored for TOC generation
+- __contentSelector__ - CSS selector of the parent of all headings
+- __placeholderSelector__ - CSS selector where to inject the TOC
+- __contentSelector__ - options object
+  - __max__ - Maximum heading level for TOC generation
+  - __ignore__ - Array of strings which will be ignored for TOC generation
 
 ### Embed auto-toc.js
 
@@ -78,24 +90,15 @@ the global window scope.
 var autoToc = require('auto-toc')
 ```
 
-## Ignoring headers via CSS class
-You can also ignore headers by using the `toc-ignore` class:
+## Ignoring headings via CSS class
+You can also ignore headings by using the `toc-ignore` class:
 
 ```html
-<h2 class="toc-ignore">Ignore this header in the TOC</h2>
-```
-or with [karmdown](http://kramdown.gettalong.org/) (markdown + CSS classes and more)
-
-```markdown
-## Ignore this header in the TOC
-{: .toc-ignore}
+<h2 class="toc-ignore">Ignore this heading in the TOC</h2>
 ```
 
-## Allowed Headers
+
+## Allowed Headings
 ```html
 <h1>, <h2>, <h3>, <h4>, <h5>, <h6>
 ```
-
-
-## Cooming soon:
-- specify max heading level
