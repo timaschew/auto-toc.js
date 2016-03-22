@@ -1,5 +1,5 @@
 # auto-toc.js
-:book: On the fly TOC generator
+:book: minimal 1KB on-the-fly TOC generator
 
 Creates a table of contents automatically in your generated markdown or any other HTML page.
 
@@ -11,14 +11,28 @@ Try the [online editor](http://timaschew.github.io/auto-toc.js/)
 Of course there are already tools to generate a TOC, but they need to be
 executed during build time. If you convert markdown to HTML you need a build
 process anyway, but generation of a TOC might be another build step in your pipeline,
-if you don't use Jeykell with Kramdown.
+if you don't use [Jekyll](https://jekyllrb.com/docs/configuration/#default-configuration) with [Kramdown](http://maruku.rubyforge.org/maruku.html#toc-generation) which suports a TOC out of the box.
 
-This library generates the TOC at runtime in the browser. If you use plain HTML
-this library can help you to avoid updating your TOC at build time completely.
+This library generates the TOC at runtime in the browser. If you use HTML (not generated from markdown)
+you can use this library as well. It helps you to avoid updating your TOC at build time completely.
 
-There are also some runtime generators, but they are build on top of jQuery.
-This library has no dependencies and still works on IE9 ;)
+### Comparision:
 
+| Name                  | Type              | Size, gzip    |
+| -------------         |:-------------:    |:-------------:|
+| [markdown-toc][1]     | Buildtime         | -             |
+| [doctoc][2]           | Buildtime         | -             |
+| auto-toc.js           | Runtime, minimal  | 1.0k          |
+| [contents][3]         | Runtime, advanced | 23k           |
+| [TOC][4]              | Runtime, jQuery   | 1.2k + jQuery |
+| [jquery.tocify][5]    | Runtime, jQuery   | 2.3k + jQuery |
+
+
+[1]: https://github.com/jonschlinkert/markdown-toc
+[2]: https://github.com/thlorenz/doctoc
+[3]: https://github.com/gajus/contents
+[4]: https://github.com/jgallen23/toc
+[5]: https://github.com/gfranko/jquery.tocify.js
 
 ## Usage
 
@@ -58,7 +72,7 @@ Then just add a div element with a special class and add two script tags:
 ## Usage
 ### Basic
 ### Advanced
-<script src="https://cdn.jsdelivr.net/auto-toc.js/0.0.5/dist.js"></script>
+<script src="https://cdn.jsdelivr.net/auto-toc.js/0.0.6/dist.js"></script>
 <script>
   autoToc('.content', '.toc-placeholder');
 </script>
@@ -85,20 +99,20 @@ auto-toc.js is bundled as Universal Module Defition.
 So you can use it with CommonJS, AMD or just via
 the global window scope.
 
-##### CommonJS
+### See it in action
+
+- js-joda
+  - [result](http://pithu.github.io/js-joda/cheat-sheet.html)
+  - [setup with GitHub Pages + include external md file ](https://github.com/pithu/js-joda/blob/gh-pages/cheat-sheet.html)
+
+### CommonJS
 ```js
 var autoToc = require('auto-toc')
 ```
 
-## Ignoring headings via CSS class
+### Ignoring headings via CSS class
 You can also ignore headings by using the `toc-ignore` class:
 
 ```html
 <h2 class="toc-ignore">Ignore this heading in the TOC</h2>
-```
-
-
-## Allowed Headings
-```html
-<h1>, <h2>, <h3>, <h4>, <h5>, <h6>
 ```
