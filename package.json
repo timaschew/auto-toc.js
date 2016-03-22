@@ -4,7 +4,8 @@
   "description": "On the fly TOC generator",
   "main": "dist.js",
   "scripts": {
-    "build": "browserify -s autoToc index.js -o dist.js"
+    "build": "browserify -s autoToc index.js -o bundle.js",
+    "minify": "npm run build && uglifyjs --compress --mangle -o dist.js -- bundle.js"
   },
   "repository": {
     "type": "git",

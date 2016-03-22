@@ -9,7 +9,7 @@ function makeToc(contentSelector, tocSelector, options) {
     throw new Error('need to provide a selector where inject the TOC');
   }
   var allChildren = Array.prototype.slice.call(document.querySelectorAll(contentSelector + ' > *'));
-  var min = Number.MAX_SAFE_INTEGER;
+  var min = 6;
   var headers = allChildren.filter(function(item) {
     var classesList = item.className.split(' ');
     if (classesList.indexOf("toc-ignore") != -1) {
