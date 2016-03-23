@@ -50,7 +50,7 @@ pages, where you have control to the (sub)domain.
 ##### Your README.md before
 
 ```markdown
-# My fancy library
+# Your fancy library
 ## Installation
 ### Windows
 ### OSX
@@ -63,7 +63,7 @@ Assuming all the headings are children of a div with the class `content` in your
 Then just add a div element with a special class and add two script tags:
 
 ```markdown
-# My fancy library
+# Your fancy library
 ## Table of contents
 <div class="toc-placeholder"></div>
 ## Installation
