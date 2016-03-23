@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>auto-toc.js - minimal 1KB on-the-fly TOC generator</title>
+    <title>auto-toc.js</title>
     <link rel="stylesheet" href="./codemirror.css">
     <link rel="stylesheet" href="./github-markdown.css">
     <style>
@@ -16,12 +16,31 @@
         float: right;
         width: 48%;
       }
+      #settings {
+        padding: 5px;
+      }
+      #settings img {
+        position: fixed;
+        top: 5px;
+        left: 5px;
+        z-index: 9999;
+      }
+      .cm-s-default {
+        left: 0 !important;
+        top: 0px !important;
+      }
+      .fork-me {
+        position: fixed;
+        top: 0;
+        right: 0;
+        border: 0;
+      }
     </style>
     <script src="https://cdn.jsdelivr.net/auto-toc.js/0.0.6/dist.js"></script>
   </head>
   <body>
-    <a title="Toggle auto-toc settings" id="settings" href="javascript:;"><img alt="settigns" style="position: fixed; top: 0; left: 0; z-index: 9999" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABUUlEQVQ4T43Tv0uXURQG8I+DCYKlEToGYZPobpD/gEaTOEhDJBHiIIj/hUIg0SARSJMI0mRrLTk4Kog/wNG+ClEmIZjJgfOFy5dXec/ynnvPc573Ps89t83N0YMjXOEhfldB24rNdnTiV+6N4GvmT/A983s4x2WsmwTR/AVDmEWA5vAomw6wmI1vsYXRIGkS3MUhHtwiqSw1kvy8lDCJTzUJxrFWSoh8Gu9qErzGcpMg3B7Ex0Jz1NbxBv8T/Lwg38crbIeEcD08aI0+hNaIXvyowJwGwU90VxSj6ST3g+y4AtMIgvj7AFbQX4A+I7QGJvQ+K2q7eImd8hZC7/uaJk7hQ+stvMhT1OGYwGpJcB/hbHzrRHgTU/qnKaEDG+nFTJo6j8fJFpoXcpSXcpTH8K/0IPI7uMimp/iW+TA2M+/C39bHVHXsGLC9fM5xO2dVoGuTvj8DapSFSQAAAABJRU5ErkJggg==" /></a>
-    <a href="https://github.com/timaschew/auto-toc.js"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    <a title="Toggle auto-toc settings" id="settings" href="javascript:;"><img alt="settigns" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABUUlEQVQ4T43Tv0uXURQG8I+DCYKlEToGYZPobpD/gEaTOEhDJBHiIIj/hUIg0SARSJMI0mRrLTk4Kog/wNG+ClEmIZjJgfOFy5dXec/ynnvPc573Ps89t83N0YMjXOEhfldB24rNdnTiV+6N4GvmT/A983s4x2WsmwTR/AVDmEWA5vAomw6wmI1vsYXRIGkS3MUhHtwiqSw1kvy8lDCJTzUJxrFWSoh8Gu9qErzGcpMg3B7Ex0Jz1NbxBv8T/Lwg38crbIeEcD08aI0+hNaIXvyowJwGwU90VxSj6ST3g+y4AtMIgvj7AFbQX4A+I7QGJvQ+K2q7eImd8hZC7/uaJk7hQ+stvMhT1OGYwGpJcB/hbHzrRHgTU/qnKaEDG+nFTJo6j8fJFpoXcpSXcpTH8K/0IPI7uMimp/iW+TA2M+/C39bHVHXsGLC9fM5xO2dVoGuTvj8DapSFSQAAAABJRU5ErkJggg==" /></a>
+    <a href="https://github.com/timaschew/auto-toc.js"><img class="fork-me" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
     <div class="container">
       <div id="codemirror-settings-container">
         <textarea id="settings-code">
