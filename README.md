@@ -18,14 +18,15 @@ you can use this library as well. It helps you to avoid updating your TOC at bui
 
 ### Comparision:
 
-| Name                  | Type              | Size, gzip    |
+| Name                  | Type              | Size (GZIP)   |
 | -------------         |:-------------:    |:-------------:|
 | [markdown-toc][1]     | Buildtime         | -             |
 | [doctoc][2]           | Buildtime         | -             |
-| auto-toc.js           | Runtime, minimal  | 1.0k          |
+| auto-toc.js           | Runtime, minimal  | 1.2k          |
 | [contents][3]         | Runtime, advanced | 23k           |
 | [TOC][4]              | Runtime, jQuery   | 1.2k + jQuery |
 | [jquery.tocify][5]    | Runtime, jQuery   | 2.3k + jQuery |
+| [GitHub userscripts]  | Userscript        | 2.8k          |
 
 
 [1]: https://github.com/jonschlinkert/markdown-toc
@@ -33,6 +34,7 @@ you can use this library as well. It helps you to avoid updating your TOC at bui
 [3]: https://github.com/gajus/contents
 [4]: https://github.com/jgallen23/toc
 [5]: https://github.com/gfranko/jquery.tocify.js
+[6]: https://github.com/Mottie/GitHub-userscripts/wiki/GitHub-table-of-contents
 
 ## Usage
 
@@ -50,7 +52,7 @@ pages, where you have control to the (sub)domain.
 ##### Your README.md before
 
 ```markdown
-# My fancy library
+# Your fancy library
 ## Installation
 ### Windows
 ### OSX
@@ -63,25 +65,27 @@ Assuming all the headings are children of a div with the class `content` in your
 Then just add a div element with a special class and add two script tags:
 
 ```markdown
-# My fancy library
+# Your fancy library
 ## Table of contents
-<div class="toc-placeholder"></div>
+<div
+  data-toc
+  data-toc-max=6
+  data-toc-ignore="['Your fancy library', 'Table of contents']"
+>
+</div>
 ## Installation
 ### Windows
 ### OSX
 ## Usage
 ### Basic
 ### Advanced
-<script src="https://cdn.jsdelivr.net/auto-toc.js/0.0.6/dist.js"></script>
-<script>
-  autoToc('.content', '.toc-placeholder');
-</script>
+<script src="https://cdn.jsdelivr.net/auto-toc.js/1.0.0/dist.js"></script>
 ```
 
 ### API
-##### autoToc(contentSelector, placeholderSelector, options)
+##### autoToc(content, placeholderSelector, options)
 
-- __contentSelector__ - CSS selector of the parent of all headings
+- __content__ - CSS selector or HTMLElement of the parent of all headings
 - __placeholderSelector__ - CSS selector where to inject the TOC
 - __contentSelector__ - options object
   - __max__ - Maximum heading level for TOC generation
