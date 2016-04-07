@@ -7,7 +7,7 @@
     "copy-codemirror-css": "cp node_modules/codemirror/lib/codemirror.css .",
     "setup-css": "npm run copy-github-md-css && npm run copy-codemirror-css",
     "build-editor": "browserify -t brfs online-editor.js -o online-editor-dist.js",
-    "minify": "npm run build-editor && uglifyjs --compress --mangle -o online-editor-dist.min.js -- online-editor-dist.js"
+    "minify-editor": "npm run build-editor && uglifyjs --compress --mangle -o online-editor-dist.min.js -- online-editor-dist.js"
 
   },
   "repository": {
