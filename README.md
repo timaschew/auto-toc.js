@@ -18,15 +18,15 @@ you can use this library as well. It helps you to avoid updating your TOC at bui
 
 ### Comparision:
 
-| Name                  | Type              | Size (GZIP)   |
-| -------------         |:-------------:    |:-------------:|
-| [markdown-toc][1]     | Buildtime         | -             |
-| [doctoc][2]           | Buildtime         | -             |
-| auto-toc.js           | Runtime, minimal  | 1.2k          |
-| [contents][3]         | Runtime, advanced | 23k           |
-| [TOC][4]              | Runtime, jQuery   | 1.2k + jQuery |
-| [jquery.tocify][5]    | Runtime, jQuery   | 2.3k + jQuery |
-| [GitHub userscripts]  | Userscript        | 2.8k          |
+| Name                     | Type              | Size (GZIP)   |
+| -------------            |:-------------:    |:-------------:|
+| [markdown-toc][1]        | Buildtime         | -             |
+| [doctoc][2]              | Buildtime         | -             |
+| auto-toc.js              | Runtime, minimal  | 1.2k          |
+| [contents][3]            | Runtime, advanced | 23k           |
+| [TOC][4]                 | Runtime, jQuery   | 1.2k + jQuery |
+| [jquery.tocify][5]       | Runtime, jQuery   | 2.3k + jQuery |
+| [GitHub userscripts][6]  | Userscript        | 2.8k          |
 
 
 [1]: https://github.com/jonschlinkert/markdown-toc
