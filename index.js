@@ -1,14 +1,19 @@
-function makeToc(contentSelector, tocSelector, options) {
+function makeToc(contentElement, tocSelector, options) {
   if (options == null) {
     options = {};
   }
-  if (contentSelector == null) {
+  if (contentElement == null) {
     throw new Error('need to provide a selector where to scan for headers');
   }
   if (tocSelector == null) {
     throw new Error('need to provide a selector where inject the TOC');
   }
-  var allChildren = Array.prototype.slice.call(document.querySelectorAll(contentSelector + ' > *'));
+  if (typeof contentElement === 'string') {
+    contentElement = document.querySelectorAll(contentElement + ' > *');
+  } else {
+    contentElement = contentElement.children;
+  }
+  var allChildren = Array.prototype.slice.call(contentElement);
   var min = 6;
   var headers = allChildren.filter(function(item) {
     var classesList = item.className.split(' ');
@@ -120,3 +125,19 @@ function setText(elem, value) {
 }
 
 module.exports = makeToc;
+module.exports.update = function() {
+  var element = document.querySelector("[data-toc]");
+  if (element != null) {
+    var options = {};
+    var ignore = (element.attributes.getNamedItem("data-toc-ignore")||{}).value
+    var max = (element.attributes.getNamedItem("data-toc-max")||{}).value
+    if (ignore != null) {
+      options.ignore = ignore;
+    }
+    if (max != null) {
+      options.max = parseInt(max);
+    }
+    makeToc(element.parentNode, '[data-toc]', options);
+  }
+};
+window.addEventListener('load', module.exports.update);
